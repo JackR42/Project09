@@ -8,30 +8,33 @@ trigger:
 - main
 
 pool:
-  vmImage: windows-latest
-##  vmImage: ubuntu-latest
+  vmImage: ubuntu-latest
 
-steps:
-- task: TerraformInstaller@1
-  inputs:
-    terraformVersion: 'latest'
-- task: TerraformTaskV4@4
-  inputs:
-    provider: 'azurerm'
-    command: 'init'
-    backendServiceArm: 'SPN-Bastion42'
-    backendAzureRmResourceGroupName: 'S2-RG-CORE'
-    backendAzureRmStorageAccountName: 'storagecrbastion42281857'
-    backendAzureRmContainerName: 'tfstate'
-    backendAzureRmKey: 'main.tf'
-- task: TerraformTaskV4@4
-  inputs:
-    provider: 'azurerm'
-    command: 'plan'
-    environmentServiceNameAzureRM: 'SPN-Bastion42'
+stages:
+- stage: TF_DEPLOY
+  jobs:
+  - job:
+    steps:
+    - task: TerraformInstaller@1
+      inputs:
+        terraformVersion: 'latest'
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: 'SPN-Bastion42'
+        backendAzureRmResourceGroupName: 'S2-RG-CORE'
+        backendAzureRmStorageAccountName: 'storagecrbastion42281857'
+        backendAzureRmContainerName: 'tfstate'
+        backendAzureRmKey: 'main.tf'
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'plan'
+        environmentServiceNameAzureRM: 'SPN-Bastion42'
 
-- task: TerraformTaskV4@4
-  inputs:
-    provider: 'azurerm'
-    command: 'apply'
-    environmentServiceNameAzureRM: 'SPN-Bastion42'
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'apply'
+        environmentServiceNameAzureRM: 'SPN-Bastion42'
