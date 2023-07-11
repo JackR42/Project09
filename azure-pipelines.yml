@@ -11,9 +11,9 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
+- task: TerraformInstaller@1
+  inputs:
+    terraformVersion: 'latest'
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'SPN-Bastion42'
