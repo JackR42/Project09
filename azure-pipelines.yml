@@ -8,7 +8,8 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
+##  vmImage: ubuntu-latest
 
 steps:
 - task: TerraformInstaller@1
