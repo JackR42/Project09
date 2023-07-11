@@ -31,6 +31,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'plan'
+        commandOptions: '-out=main.tfplan -input=false'
         environmentServiceNameAzureRM: 'SPN-Bastion42'
 
     - task: TerraformTaskV4@4
@@ -54,8 +55,21 @@ stages:
     condition: Succeeded()
     steps:
     - task: TerraformInstaller@0
-      displayName: 'Terraform install'
-    - task: TerraformInstaller@0
       displayName: 'TF Install'
       inputs:
         terraformVersion: 'latest'
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: 'SPN-Bastion42'
+        backendAzureRmResourceGroupName: 'S2-RG-CORE'
+        backendAzureRmStorageAccountName: 'storagecrbastion42281857'
+        backendAzureRmContainerName: 'tfstate'
+        backendAzureRmKey: 'main.tf'
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'destroy'
+        commandOptions: '-out=main.tfplan -input=false'
+        environmentServiceNameAzureRM: 'SPN-Bastion42'
