@@ -71,5 +71,4 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'destroy'
-        commandOptions: '-out=main.tfplan -input=false'
         environmentServiceNameAzureRM: 'SPN-Bastion42'
