@@ -24,3 +24,14 @@ steps:
     backendAzureRmStorageAccountName: 'storagecrbastion42281857'
     backendAzureRmContainerName: 'tfstate'
     backendAzureRmKey: 'main.tf'
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: 'SPN-Bastion42'
+
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    environmentServiceNameAzureRM: 'SPN-Bastion42'
