@@ -20,4 +20,4 @@ steps:
     azureSubscription: 'SPN-Bastion42'
     scriptType: 'ps'
     scriptLocation: 'inlineScript'
-    inlineScript: 'az group create –name “S2-RG-Bastion42” –location westeurope'
+    inlineScript: 'az group create –name "S2-RG-Bastion42" –location westeurope'
