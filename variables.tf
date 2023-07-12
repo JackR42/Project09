@@ -12,11 +12,11 @@ variable "app-name" {
     description = "The name of the application"
     default = "Project51"
 }
-variable "loc_name" {
+variable "loc-name" {
   description = "The name of the Azure Region in which all resources should be created."
   default = "westeurope"
 }
-variable "rg_name" {
+variable "rg-name" {
     description = "The name of the resource group"
     default = "$(sub-name)-RG-$(app-name)-$(env-name)"
 }
