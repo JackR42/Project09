@@ -16,9 +16,11 @@ stages:
   - job:
     steps:
     - task: TerraformInstaller@1
-      inputs:
+      displayName: TF_Installer      
+      inputs: 
         terraformVersion: 'latest'
     - task: TerraformTaskV4@4
+      displayName: TF_INIT 
       inputs:
         provider: 'azurerm'
         command: 'init'
@@ -28,6 +30,7 @@ stages:
         backendAzureRmContainerName: 'tfstate'
         backendAzureRmKey: 'main.tf'
     - task: TerraformTaskV4@4
+      displayName: TF_PLAN 
       inputs:
         provider: 'azurerm'
         command: 'plan'
@@ -35,6 +38,7 @@ stages:
         environmentServiceNameAzureRM: 'SPN-Bastion42'
 
     - task: TerraformTaskV4@4
+      displayName: TF_DEPLOY 
       inputs:
         provider: 'azurerm'
         command: 'apply'
