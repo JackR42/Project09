@@ -16,8 +16,9 @@ variable "loc-name" {
   description = "The name of the Azure Region in which all resources should be created."
   default = "westeurope"
 }
+
 variable "rg-name" {
     description = "The name of the resource group"
-    default = "$(sub-name)-RG-$(app-name)-$(env-name)"
+    default = "$(var.sub-name)-RG-$(var.app-name)-$(var.env-name)"
 }
 
