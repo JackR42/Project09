@@ -19,6 +19,6 @@ variable "loc-name" {
 
 variable "rg-name" {
     description = "The name of the resource group"
-    default = "$({var.sub-name}-RG-${var.app-name}-${var.env-name}"
+    default = "${var.sub-name}-RG-${var.app-name}-${var.env-name}"
 }
 
