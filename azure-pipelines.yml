@@ -34,7 +34,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'plan'
-        commandOptions: '-out=main.tfplan -input=false'
+        commandOptions: '-out=main.tfplan -input=false -var-file=variabless-dev.tfvars'
         environmentServiceNameAzureRM: 'SPN-Bastion42'
 
     - task: TerraformTaskV4@4
