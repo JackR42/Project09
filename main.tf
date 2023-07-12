@@ -9,6 +9,6 @@ terraform {
 
 ### BEGIN MAIN
 resource "azurerm_resource_group" "project" {
-  name = $(var.rg-name)
-  location = $(var.loc-name)
+  name = ${var.rg-name}
+  location = ${var.loc-name}
 }
