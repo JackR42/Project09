@@ -1,14 +1,14 @@
 # Variables.tf - Generic variables
 
-variable "env" {
+variable "env-name" {
     description = "The name of the environment"
     default = "env-default"
 }
-variable "resource-group-name" {
+variable "rg-name" {
     description = "The name of the resource group"
     default = "rg-default"
 }
-variable "location-name" {
+variable "loc-name" {
   description = "The name of the Azure Region in which all resources should be created."
   default = "westeurope"
 }
