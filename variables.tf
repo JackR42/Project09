@@ -17,8 +17,3 @@ variable "loc-name" {
   default = "westeurope"
 }
 
-variable "rg-name" {
-    description = "The name of the resource group"
-    default = "${var.sub-name}-RG-${var.app-name}-${var.env-name}"
-}
-
