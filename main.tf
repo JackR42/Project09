@@ -1,7 +1,5 @@
-variable "input_hello" {
-  default = "Hello World!"
-}
-
-output "output_hello" {
-  value = var.input_hello
+### BEGIN MAIN
+resource "azurerm_resource_group" "project" {
+  name = "S2-RG-Project09"
+  location = "westeurope"
 }
