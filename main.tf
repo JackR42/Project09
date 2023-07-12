@@ -9,6 +9,6 @@ terraform {
 
 ### BEGIN MAIN
 resource "azurerm_resource_group" "project" {
-  name = "S2-RG-Project09"
-  location = "westeurope"
+  name = var.env-name
+  location = var.loc-name
 }
