@@ -5,7 +5,7 @@ resource "azurerm_virtual_network" "network-vnet" {
 #  name                = "${lower(replace(var.app_name," ","-"))}-${var.environment}-vnet"
   name                = "Project09-vnet-DEV"
 #  address_space       = "${var.network-vnet-cidr}"
-  address_space       = [var.network-vnet-cidr]
+#  address_space       = [var.network-vnet-cidr]
   address_space = ["10.128.0.0/16"]
 
 #  resource_group_name = azurerm_resource_group.network-rg.name
