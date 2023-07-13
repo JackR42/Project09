@@ -31,7 +31,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'plan'
-        commandOptions: '-out=main.tfplan -input=true -var-file=variables-dev.tfvars'
+        commandOptions: '-out=main.tfplan -var-file=variables-dev.tfvars'
         environmentServiceNameAzureRM: 'SPN-Project09'
     - task: TerraformTaskV4@4
       displayName: TF_DEPLOY 
