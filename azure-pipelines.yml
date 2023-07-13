@@ -27,10 +27,10 @@ stages:
         backendAzureRmContainerName: 'tfstate'
         backendAzureRmKey: 'main.tf'
     - task: TerraformTaskV4@4
-      displayName: TF_PLAN
       inputs:
         provider: 'azurerm'
         command: 'plan'
+        commandOptions: '-var-file variables-dev.tfvars'
         environmentServiceNameAzureRM: 'SPN-Project09'
     - task: TerraformTaskV4@4
       displayName: TF_DEPLOY
