@@ -31,11 +31,12 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'plan'
-        commandOptions: '-output=main.tfplan -var-file=variables-dev.tfvars'
+        commandOptions: '-out=main.tfplan -var-file=variables-dev.tfvars'
         environmentServiceNameAzureRM: 'SPN-Project09'
     - task: TerraformTaskV4@4
       displayName: TF_DEPLOY
       inputs:
         provider: 'azurerm'
         command: 'apply'
+        commandOptions: 'main.tfplan'
         environmentServiceNameAzureRM: 'SPN-Project09'
