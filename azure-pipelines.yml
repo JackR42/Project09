@@ -27,6 +27,11 @@ stages:
         backendAzureRmContainerName: 'tfstate'
         backendAzureRmKey: 'main.tf'
     - task: TerraformTaskV4@4
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'plan'
+        environmentServiceNameAzureRM: 'SPN-Project09'
       displayName: TF_DEPLOY 
       inputs:
         provider: 'azurerm'
