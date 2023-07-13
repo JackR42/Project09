@@ -2,11 +2,11 @@
 
 variable "sub-name" {
     description = "The prefix defined for the Subscription"
-    default = "S2"
+    default = "S0"
 }
 variable "env-name" {
     description = "The name of the environment"
-    default = "DEV"
+    default = "ENV"
 }
 variable "app-name" {
     description = "The name of the application"
