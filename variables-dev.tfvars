@@ -3,5 +3,5 @@
 # Generic variables
 sub-name = "S2"
 env-name = "DEV"
-app-name = "Project09"
+app-name = "Project099"
 loc-name = "westeurope"
