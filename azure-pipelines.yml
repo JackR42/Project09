@@ -13,10 +13,11 @@ stages:
   - job:
     steps:
     - task: TerraformInstaller@1
-      displayName: TF_Installer      
+      displayName: TF_INSTALL      
       inputs: 
         terraformVersion: 'latest'
     - task: TerraformTaskV4@4
+      displayName: TF_INIT
       inputs:
         provider: 'azurerm'
         command: 'init'
@@ -32,4 +33,9 @@ stages:
         command: 'plan'
         commandOptions: '-out=main.tfplan -input=true -var-file=variables-dev.tfvars'
         environmentServiceNameAzureRM: 'SPN-Project09'
-
+    - task: TerraformTaskV4@4
+      displayName: TF_DEPLOY 
+      inputs:
+        provider: 'azurerm'
+        command: 'apply'
+        environmentServiceNameAzureRM: 'SPN-Project09'
