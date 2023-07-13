@@ -32,3 +32,9 @@ stages:
         provider: 'azurerm'
         command: 'plan'
         environmentServiceNameAzureRM: 'SPN-Project09'
+    - task: TerraformTaskV4@4
+      displayName: TF_DEPLOY
+      inputs:
+        provider: 'azurerm'
+        command: 'apply'
+        environmentServiceNameAzureRM: 'SPN-Project09'
