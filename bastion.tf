@@ -1,6 +1,7 @@
 ## SUBNET - assigned to VNET
 resource "azurerm_subnet" "project-subnet" {
-  name                = "AzureBastionSubnet"
+#  name                = "AzureBastionSubnet"
+  name                = "${var.app-name}-subnet-${var.env-name}"
   resource_group_name = azurerm_resource_group.project.name
 
   virtual_network_name = azurerm_virtual_network.project-vnet.name
@@ -60,6 +61,7 @@ resource "azurerm_network_security_group" "project-nsg" {
 resource "azurerm_subnet_network_security_group_association" "project-subnet-nsg-association" {
   subnet_id                 = azurerm_subnet.project-subnet.id
   network_security_group_id = azurerm_network_security_group.project-nsg.id
+
 }
 
 # Get a Static Public IP
