@@ -19,7 +19,7 @@ resource "azurerm_bastion_host" "project-bastion-host" {
   tunneling_enabled      = true
 
   ip_configuration {
-    name                 = "config-01"
+    name                 = "ipconfig"
     subnet_id            = azurerm_subnet.project-subnet-bastion.id
     public_ip_address_id = azurerm_public_ip.project-pip-bastion.id
   }
