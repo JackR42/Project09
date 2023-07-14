@@ -80,7 +80,7 @@ resource "azurerm_public_ip" "project-vm-windows-pip" {
 resource "azurerm_network_interface" "project-vm-windows-nic" {
   depends_on=[azurerm_public_ip.project-vm-windows-pip]
 
-  name                = "${var.prefix}-${var.environment}-bastion-windows-nic"
+  name                = "${var.app-name}-vm-windows-nic-${var.env-name}"
   resource_group_name = azurerm_resource_group.project.name
   location            = azurerm_resource_group.project.location
 
