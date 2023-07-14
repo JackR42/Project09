@@ -77,7 +77,7 @@ resource "azurerm_public_ip" "project-vm-windows-pip" {
 }
 
 # NIC - Create Network Card for VM
-resource "azurerm_network_interface" "project-windows-vm-nic" {
+resource "azurerm_network_interface" "project-vm-windows-nic" {
   depends_on=[azurerm_public_ip.project-windows-vm-pip]
 
   name                = "${var.prefix}-${var.environment}-bastion-windows-nic"
