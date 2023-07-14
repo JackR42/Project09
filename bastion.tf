@@ -1,7 +1,6 @@
 ## SUBNET - assigned to VNET
 resource "azurerm_subnet" "project-subnet" {
-#  name                = "AzureBastionSubnet"
-  name                = "${var.app-name}-subnet-${var.env-name}"
+  name                = "AzureBastionSubnet"
   resource_group_name = azurerm_resource_group.project.name
 
   virtual_network_name = azurerm_virtual_network.project-vnet.name
@@ -90,7 +89,8 @@ resource "azurerm_network_interface" "project-vm-windows-nic" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.project-subnet.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.project-vm-windows-pip.id
+#    public_ip_address_id          = azurerm_public_ip.project-vm-windows-pip.id
+    public_ip_address_id          = azurerm_public_ip.project-pip.id
   }
 
   tags = {
