@@ -1,11 +1,11 @@
 # Create network interface
 resource "azurerm_network_interface" "project-nic-vm1" {
-  name                = "${var.app-name}-nic-vm-win01-${var.env-name}"
+  name                = "${var.app-name}-nic-vm1-${var.env-name}"
   resource_group_name = azurerm_resource_group.project.name
   location            = azurerm_resource_group.project.location
 
   ip_configuration {
-    name                          = "ipconfiguration"
+    name                          = "ipconfig"
     subnet_id                     = azurerm_subnet.project-subnet-vm1.id
     private_ip_address_allocation = "Dynamic"
   }
