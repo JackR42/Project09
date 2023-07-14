@@ -55,7 +55,7 @@ stages:
     condition: Succeeded()
     steps:
     - task: TerraformInstaller@0
-      displayName: TF_Destroy
+      displayName: TF_INSTALL
       inputs:
         terraformVersion: 'latest'
     - task: TerraformTaskV3@3
