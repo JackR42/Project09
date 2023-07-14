@@ -1,4 +1,4 @@
-resource "azurerm_public_ip" "project_pip_bastion" {
+resource "azurerm_public_ip" "project-pip-bastion" {
   name                = "${var.app-name}-pip-bastion-${var.env-name}"
   resource_group_name = azurerm_resource_group.project.name
   location            = azurerm_resource_group.project.location
@@ -6,7 +6,7 @@ resource "azurerm_public_ip" "project_pip_bastion" {
   sku                 = "Standard"
 }
 
-resource "azurerm_bastion_host" "bastion_host" {
+resource "azurerm_bastion_host" "project-bastion-host" {
   name                = "${var.app-name}-bastion-host-${var.env-name}"
   resource_group_name = azurerm_resource_group.project.name
   location            = azurerm_resource_group.project.location
