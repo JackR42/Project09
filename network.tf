@@ -5,6 +5,8 @@ resource "azurerm_virtual_network" "project-vnet" {
   resource_group_name = azurerm_resource_group.project.name
   location            = azurerm_resource_group.project.location
   tags = {
+    subscription = var.sub-name
+    application = var.app-name
     environment = var.env-name
   }
 }
