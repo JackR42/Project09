@@ -1,9 +1,4 @@
 variable "vnet-cidr" {
   type        = string
-  description = "The CIDR of the Bastion VNET"
-}
-
-variable "bastion-subnet-cidr" {
-  type        = string
-  description = "The CIDR for the Bastion subnet"
+  description = "The CIDR of the VNET Virtual Network"
 }
