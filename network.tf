@@ -19,14 +19,13 @@ resource "azurerm_subnet" "project-subnet-bastion" {
   address_prefixes     = [var.subnet-cidr-bastion]
 }
 
+# Create subnet VM1
 resource "azurerm_subnet" "project-subnet-vm1" {
   name                = "${var.app-name}-subnet-vm1-${var.env-name}"
   resource_group_name  = azurerm_resource_group.project.name
   virtual_network_name = azurerm_virtual_network.project-vnet.name
   address_prefixes     = [var.subnet-cidr-vm1]
 }
-
-### xxx
 
 # Create Network Security Group for VM Subnet and the corresponding rule for RDP from Azure Bastion
 resource "azurerm_network_security_group" "project-nsg-subnet-vm1" {
