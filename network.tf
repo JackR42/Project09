@@ -45,7 +45,6 @@ resource "azurerm_network_security_rule" "inbound_allow_rdp" {
   network_security_group_name = azurerm_network_security_group.project-nsg-subnet-vm1.name
   name                = "Inbound_Allow_Bastion_RDP"
   resource_group_name = azurerm_resource_group.project.name
-  location            = azurerm_resource_group.project.location
   priority                    = 500
   direction                   = "Inbound"
   access                      = "Allow"
