@@ -78,7 +78,7 @@ resource "azurerm_public_ip" "project-vm-windows-pip" {
 
 # NIC - Create Network Card for VM
 resource "azurerm_network_interface" "project-vm-windows-nic" {
-  depends_on=[azurerm_public_ip.project-windows-vm-pip]
+  depends_on=[azurerm_public_ip.project-vm-windows-pip]
 
   name                = "${var.prefix}-${var.environment}-bastion-windows-nic"
   resource_group_name = azurerm_resource_group.project.name
@@ -88,7 +88,7 @@ resource "azurerm_network_interface" "project-vm-windows-nic" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.project-subnet.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.project-windows-vm-pip.id
+    public_ip_address_id          = azurerm_public_ip.project-vm-windows-pip.id
   }
 
   tags = {
