@@ -46,7 +46,7 @@ resource "azurerm_dev_test_global_vm_shutdown_schedule" "project-shutdown" {
   daily_recurrence_time = "2000"
   timezone              = "W. Europe Standard Time"
 
-#  notification_settings {
-#    enabled         = true   
-#  }
+  notification_settings {
+    enabled         = false   
+  }
  }
