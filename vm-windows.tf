@@ -5,7 +5,7 @@ resource "azurerm_network_interface" "project-nic-vm-win01" {
   location            = azurerm_resource_group.project.location
 
   ip_configuration {
-    name                          = "ipconfig-project-nic-vm-win01"
+    name                          = "ipconfiguration"
     subnet_id                     = azurerm_subnet.project-subnet-vm1.id
     private_ip_address_allocation = "Dynamic"
   }
