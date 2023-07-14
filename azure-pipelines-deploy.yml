@@ -1,4 +1,4 @@
-# Starter pipeline
+# Starter pipeline: azure-pipelines-deploy.yml
 
 pool:
   vmImage: ubuntu-latest
