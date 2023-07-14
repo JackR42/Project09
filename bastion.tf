@@ -64,8 +64,7 @@ resource "azurerm_subnet_network_security_group_association" "project-subnet-nsg
 
 # Get a Static Public IP
 resource "azurerm_public_ip" "project-vm-windows-pip" {
-  name                = "${var.prefix}-${var.environment}-bastion-windows-ip"
-  name                = "${var.app-name}-project-vm-windows-pip-${var.env-name}"
+  name                = "${var.app-name}-vm-windows-pip-${var.env-name}"
   resource_group_name = azurerm_resource_group.project.name
   location            = azurerm_resource_group.project.location
   allocation_method   = "Static"
