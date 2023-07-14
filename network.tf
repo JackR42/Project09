@@ -13,7 +13,7 @@ resource "azurerm_virtual_network" "project-vnet" {
 
 # Create a subnet for bastion
 resource "azurerm_subnet" "bastion-subnet" {
-  name                 = "${var.app-name}-bastion-subnet-${var.env-name"
+  name                 = "${var.app-name}-bastion-subnet-${var.env-name}"
   address_prefixes     = [var.bastion-subnet-cidr]
   virtual_network_name = azurerm_virtual_network.project-vnet.name
   resource_group_name  = azurerm_resource_group.project.name
