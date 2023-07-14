@@ -19,7 +19,7 @@ resource "azurerm_subnet" "project-subnet-bastion" {
   address_prefixes     = [var.subnet-cidr-bastion]
 }
 
-resource "azurerm_subnet" "project_subnet-vm1" {
+resource "azurerm_subnet" "project-subnet-vm1" {
   name                = "${var.app-name}-subnet-vm1-${var.env-name}"
   resource_group_name  = azurerm_resource_group.project.name
   virtual_network_name = azurerm_virtual_network.project-vnet.name
