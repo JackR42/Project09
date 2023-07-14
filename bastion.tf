@@ -16,8 +16,8 @@ resource "azurerm_public_ip" "project-pip" {
 
 resource "azurerm_bastion_host" "project-bastion" {
   name                = "${var.app-name}-bastion-${var.env-name}"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
+  resource_group_name = azurerm_resource_group.project.name
+  location            = azurerm_resource_group.project.location
 
   ip_configuration {
     name                 = "configuration"
