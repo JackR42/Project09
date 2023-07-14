@@ -1,5 +1,5 @@
 # Create network interface
-resource "azurerm_network_interface" "project-nic-vm-win01" {
+resource "azurerm_network_interface" "project-nic-vm1" {
   name                = "${var.app-name}-nic-vm-win01-${var.env-name}"
   resource_group_name = azurerm_resource_group.project.name
   location            = azurerm_resource_group.project.location
@@ -19,11 +19,11 @@ resource "azurerm_windows_virtual_machine" "project-vm1" {
   admin_username      = "Admin42"
   admin_password      = "ABCabc123."
   network_interface_ids = [
-    azurerm_network_interface.project-nic-vm-win01.id
+    azurerm_network_interface.project-nic-vm1.id
   ]
 
   os_disk {
-    name                 = "disk-os-vm-win01"
+    name                 = "${var.app-name}-disk-os-vm1-${var.env-name}"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
