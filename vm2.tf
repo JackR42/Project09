@@ -37,7 +37,7 @@ resource "azurerm_windows_virtual_machine" "project-vm2" {
 
   source_image_reference {
     publisher = "MicrosoftSQLServer"
-    offer     = "sql2022-ws2022"
+    offer     = "SQL2017-WS2016"
     sku       = "SQLDEV"
     version   = "latest"
   }
