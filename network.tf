@@ -68,12 +68,6 @@ resource "azurerm_network_security_rule" "outbound_allow_subnet" {
   destination_port_range      = "*"
   source_address_prefix       = azurerm_subnet.project-subnet.address_prefixes[0]
   destination_address_prefix  = azurerm_subnet.project-subnet.address_prefixes[0]
-
-  tags = {
-    subscription = var.sub-name
-    application = var.app-name
-    environment = var.env-name
-  }
 }
 
 resource "azurerm_subnet_network_security_group_association" "project-nsg-associate_subnet" {
