@@ -5,6 +5,7 @@ pool:
 
 stages:
 - stage: TF_DECOMMISSION
+  jobs:
   - job:
     steps:
     - task: TerraformInstaller@0
