@@ -10,9 +10,9 @@ $Prefix = "S1-RG-"
 $region = "westeurope"
 
 #$randomInt = $null
+#$randomInt = 977542
 $randomInt = 564209
 if ($randomInt -eq $null) {
-    #$randomInt = 977542
     $randomInt = Get-Random -Maximum 999999
 }
 Write-Output "RandomInt: $randomInt"
