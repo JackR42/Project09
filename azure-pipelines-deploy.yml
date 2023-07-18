@@ -21,7 +21,7 @@ stages:
         backendAzureRmResourceGroupName: 'S1-RG-CORE'
         backendAzureRmStorageAccountName: 'storagecrproject09564209'
         backendAzureRmContainerName: 'tfstate'
-        backendAzureRmKey: 'main.tf'
+        backendAzureRmKey: 'main.tfstate'
     - task: TerraformTaskV4@4
       displayName: TF_PLAN
       inputs:
