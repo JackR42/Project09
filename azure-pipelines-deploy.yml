@@ -37,37 +37,3 @@ stages:
         commandOptions: 'main.tfplan'
         environmentServiceNameAzureRM: 'SPN-Project09'
         
-- stage: TF_DECOMMISSION
-  jobs:
-  - job: ApproveDecom
-    pool: server
-    steps:
-    - task: ManualValidation@0
-      displayName: TF_Approve
-      inputs:
-        instructions: 'Stage TF_DECOMMISSION, do you approve?'
-  - job: 
-    dependsOn: ApproveDecom
-    condition: Succeeded()
-    steps:
-    - task: TerraformInstaller@0
-      displayName: TF_INSTALL
-      inputs:
-        terraformVersion: 'latest'
-    - task: TerraformTaskV3@3
-      displayName: TF_INIT
-      inputs:
-        provider: 'azurerm'
-        command: 'init'
-        backendServiceArm: 'SPN-Project09'
-        backendAzureRmResourceGroupName: 'S1-RG-CORE'
-        backendAzureRmStorageAccountName: 'storagecrproject09564209'
-        backendAzureRmContainerName: 'tfstate'
-        backendAzureRmKey: 'main.tfstate'
-    - task: TerraformTaskV3@3
-      displayName: TF_Destroy
-      inputs:
-        provider: 'azurerm'
-        command: 'destroy'
-        commandOptions: '-var-file=variables-dev.tfvars'
-        environmentServiceNameAzureRM: 'SPN-Project09'
