@@ -6,9 +6,9 @@ resource "azurerm_public_ip" "project-pip-bastion" {
   sku                 = "Standard"
 
   tags = {
-    subscription = var.sub-name
-    application = var.app-name
-    environment = var.env-name
+    Subscription = var.sub-name
+    Application = var.app-name
+    Environment = var.env-name
   }
 }
 
@@ -31,8 +31,8 @@ resource "azurerm_bastion_host" "project-bastion-host" {
   }
 
   tags = {
-    subscription = var.sub-name
-    application = var.app-name
-    environment = var.env-name
+    Subscription = var.sub-name
+    Application = var.app-name
+    Environment = var.env-name
   }
 }

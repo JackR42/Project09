@@ -45,8 +45,8 @@ resource "azurerm_resource_group" "project" {
   location = "${var.loc-name}"
 
   tags = {
-    subscription = var.sub-name
-    application = var.app-name
-    environment = var.env-name
+    Subscription = var.sub-name
+    Application = var.app-name
+    Environment = var.env-name
   }
 }

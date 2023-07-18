@@ -11,9 +11,9 @@ resource "azurerm_network_interface" "project-nic-vm0" {
   }
 
   tags = {
-    subscription = var.sub-name
-    application = var.app-name
-    environment = var.env-name
+    Subscription = var.sub-name
+    Application = var.app-name
+    Environment = var.env-name
   }
 }
 
@@ -43,9 +43,9 @@ resource "azurerm_windows_virtual_machine" "project-vm0" {
   }
 
   tags = {
-    subscription = var.sub-name
-    application = var.app-name
-    environment = var.env-name
+    Subscription = var.sub-name
+    Application = var.app-name
+    Environment = var.env-name
   }
 }
 
@@ -64,8 +64,8 @@ resource "azurerm_dev_test_global_vm_shutdown_schedule" "project-shutdown" {
   }
 
   tags = {
-    subscription = var.sub-name
-    application = var.app-name
-    environment = var.env-name
+    Subscription = var.sub-name
+    Application = var.app-name
+    Environment = var.env-name
   }
  }

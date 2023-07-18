@@ -6,9 +6,9 @@ resource "azurerm_virtual_network" "project-vnet" {
   location            = azurerm_resource_group.project.location
 
   tags = {
-    subscription = var.sub-name
-    application = var.app-name
-    environment = var.env-name
+    Subscription = var.sub-name
+    Application = var.app-name
+    Environment = var.env-name
   }
 }
 
@@ -36,9 +36,9 @@ resource "azurerm_network_security_group" "project-nsg-subnet" {
   location            = azurerm_resource_group.project.location
 
   tags = {
-    subscription = var.sub-name
-    application = var.app-name
-    environment = var.env-name
+    Subscription = var.sub-name
+    Application = var.app-name
+    Environment = var.env-name
   }
 }
 
