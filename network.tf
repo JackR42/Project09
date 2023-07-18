@@ -54,12 +54,6 @@ resource "azurerm_network_security_rule" "inbound_allow_rdp" {
   destination_port_range      = "3389"
   source_address_prefix       = azurerm_subnet.project-subnet-bastion.address_prefixes[0]
   destination_address_prefix  = azurerm_subnet.project-subnet.address_prefixes[0]
-
-  tags = {
-    subscription = var.sub-name
-    application = var.app-name
-    environment = var.env-name
-  }
 }
 
 resource "azurerm_network_security_rule" "outbound_allow_subnet" {
