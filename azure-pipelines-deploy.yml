@@ -69,5 +69,5 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'destroy'
-        commandOptions: '-lock=false -var-file=variables-dev.tfvars'
+#        commandOptions: '-lock=false -var-file=variables-dev.tfvars'
         environmentServiceNameAzureRM: 'SPN-Project09'
