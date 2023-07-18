@@ -1,5 +1,5 @@
 # Create network interface
-resource "azurerm_network_interface" "project-nic-vm1" {
+resource "azurerm_network_interface" "project-nic-vm2" {
   name                = "${var.app-name}-nic-vm1-${var.env-name}"
   resource_group_name = azurerm_resource_group.project.name
   location            = azurerm_resource_group.project.location
@@ -17,8 +17,8 @@ resource "azurerm_network_interface" "project-nic-vm1" {
   }
 }
 
-resource "azurerm_windows_virtual_machine" "project-vm1" {
-  name                = "${var.vm1-name}"
+resource "azurerm_windows_virtual_machine" "project-vm2" {
+  name                = "${var.vm2-name}"
   resource_group_name = azurerm_resource_group.project.name
   location            = azurerm_resource_group.project.location
   size                = "Standard_DS2_v2"
@@ -26,19 +26,19 @@ resource "azurerm_windows_virtual_machine" "project-vm1" {
   admin_password       = data.azurerm_key_vault_secret.secret3.value  
 
   network_interface_ids = [
-    azurerm_network_interface.project-nic-vm1.id
+    azurerm_network_interface.project-nic-vm2.id
   ]
 
   os_disk {
-    name                 = "${var.app-name}-disk-os-vm1-${var.env-name}"
-    caching              = "ReadOnly"
+    name                 = "${var.app-name}-disk-os-vm2-${var.env-name}"
+    caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
 
   source_image_reference {
-    publisher = "MicrosoftWindowsServer"
-    offer     = "WindowsServer"
-    sku       = "2022-Datacenter"
+    publisher = "MicrosoftSQLServer"
+    offer     = "SQL2022-WS2022"
+    sku       = "SQLDEV"
     version   = "latest"
   }
 
@@ -51,8 +51,8 @@ resource "azurerm_windows_virtual_machine" "project-vm1" {
 
 # Auto shutdown VM1
 
-resource "azurerm_dev_test_global_vm_shutdown_schedule" "project-shutdown-vm1" {
-  virtual_machine_id = azurerm_windows_virtual_machine.project-vm1.id
+resource "azurerm_dev_test_global_vm_shutdown_schedule" "project-shutdown-vm2" {
+  virtual_machine_id = azurerm_windows_virtual_machine.project-vm2.id
   location            = azurerm_resource_group.project.location
   enabled            = true
 
