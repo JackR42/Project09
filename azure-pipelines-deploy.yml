@@ -69,6 +69,5 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'destroy'
-        commandOptions: '-target=azurerm_bastion_host.project-bastion-host'
-#        commandOptions: '-lock=false -var-file=variables-dev.tfvars'
+        commandOptions: '-target=azurerm_bastion_host.project-bastion-host  -var-file=variables-dev.tfvars'
         environmentServiceNameAzureRM: 'SPN-Project09'
