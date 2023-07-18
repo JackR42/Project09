@@ -19,11 +19,6 @@ resource "azurerm_subnet" "project-subnet-bastion" {
   virtual_network_name = azurerm_virtual_network.project-vnet.name
   address_prefixes     = [var.subnet-cidr-bastion]
 
-  tags = {
-    subscription = var.sub-name
-    application = var.app-name
-    environment = var.env-name
-  }
 }
 
 # Create subnet for backend VMs
