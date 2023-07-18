@@ -1,3 +1,37 @@
+### BEGIN MAIN
+
+### BEGIN KeyVault
+data "azurerm_key_vault" "project" {
+  name                = "keyvaultProject09564209"
+  resource_group_name = "S1-RG-CORE"
+}
+data "azurerm_key_vault_secret" "secret0" {
+  name         = "ARM-RG-Project"
+  key_vault_id = data.azurerm_key_vault.project.id
+}
+data "azurerm_key_vault_secret" "secret1" {
+  name         = "SQLServer-InstanceName"
+  key_vault_id = data.azurerm_key_vault.project.id
+}
+data "azurerm_key_vault_secret" "secret2" {
+  name         = "SQLServer-InstanceAdminUserName"
+  key_vault_id = data.azurerm_key_vault.project.id
+}
+data "azurerm_key_vault_secret" "secret3" {
+  name         = "SQLServer-InstanceAdminPassword"
+  key_vault_id = data.azurerm_key_vault.project.id
+}
+data "azurerm_key_vault_secret" "secret4" {
+  name         = "SQLServer-Database1Name"
+  key_vault_id = data.azurerm_key_vault.project.id
+}
+data "azurerm_key_vault_secret" "secret5" {
+  name         = "WebSite-StorageName"
+  key_vault_id = data.azurerm_key_vault.project.id
+}
+
+### END KeyVault
+
 ### BEGIN INIT
 provider "azurerm" {
   features {}
