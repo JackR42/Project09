@@ -31,14 +31,14 @@ resource "azurerm_windows_virtual_machine" "project-vm1" {
 
   os_disk {
     name                 = "${var.app-name}-disk-os-vm1-${var.env-name}"
-    caching              = "ReadOnly"
+    caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
 
   source_image_reference {
-    publisher = "MicrosoftWindowsServer"
-    offer     = "WindowsServer"
-    sku       = "2022-Datacenter"
+    publisher = "MicrosoftSQLServer"
+    offer     = "SQL2019-WS2022"
+    sku       = "SQLDEV"
     version   = "latest"
   }
 
@@ -49,7 +49,7 @@ resource "azurerm_windows_virtual_machine" "project-vm1" {
   }
 }
 
-# Auto shutdown VM1
+# Auto shutdown VM2
 
 resource "azurerm_dev_test_global_vm_shutdown_schedule" "project-shutdown-vm1" {
   virtual_machine_id = azurerm_windows_virtual_machine.project-vm1.id
