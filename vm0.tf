@@ -49,9 +49,9 @@ resource "azurerm_windows_virtual_machine" "project-vm0" {
   }
 }
 
-# Auto shutdown VM
+# Auto shutdown VM0
 
-resource "azurerm_dev_test_global_vm_shutdown_schedule" "project-shutdown" {
+resource "azurerm_dev_test_global_vm_shutdown_schedule" "project-shutdown-vm0" {
   virtual_machine_id = azurerm_windows_virtual_machine.project-vm0.id
   location            = azurerm_resource_group.project.location
   enabled            = true
