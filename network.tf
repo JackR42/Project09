@@ -73,10 +73,4 @@ resource "azurerm_network_security_rule" "outbound_allow_subnet" {
 resource "azurerm_subnet_network_security_group_association" "project-nsg-associate_subnet" {
   network_security_group_id = azurerm_network_security_group.project-nsg-subnet.id
   subnet_id                 = azurerm_subnet.project-subnet.id
-
-  tags = {
-    subscription = var.sub-name
-    application = var.app-name
-    environment = var.env-name
-  }
 }
