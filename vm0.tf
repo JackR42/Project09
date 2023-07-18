@@ -1,18 +1,24 @@
 # Create network interface
-resource "azurerm_network_interface" "project-nic-vm1" {
-  name                = "${var.app-name}-nic-vm1-${var.env-name}"
+resource "azurerm_network_interface" "project-nic-vm0" {
+  name                = "${var.app-name}-nic-vm0-${var.env-name}"
   resource_group_name = azurerm_resource_group.project.name
   location            = azurerm_resource_group.project.location
 
   ip_configuration {
     name                          = "ipconfig"
-    subnet_id                     = azurerm_subnet.project-subnet-vm1.id
+    subnet_id                     = azurerm_subnet.project-subnet.id
     private_ip_address_allocation = "Dynamic"
+  }
+
+  tags = {
+    subscription = var.sub-name
+    application = var.app-name
+    environment = var.env-name
   }
 }
 
-resource "azurerm_windows_virtual_machine" "project-vm1" {
-  name                = "VM1"
+resource "azurerm_windows_virtual_machine" "project-vm0" {
+  name                = "${var.vm0-name}"
   resource_group_name = azurerm_resource_group.project.name
   location            = azurerm_resource_group.project.location
   size                = "Standard_DS2_v2"
@@ -20,11 +26,11 @@ resource "azurerm_windows_virtual_machine" "project-vm1" {
   admin_password       = data.azurerm_key_vault_secret.secret3.value  
 
   network_interface_ids = [
-    azurerm_network_interface.project-nic-vm1.id
+    azurerm_network_interface.project-nic-vm0.id
   ]
 
   os_disk {
-    name                 = "${var.app-name}-disk-os-vm1-${var.env-name}"
+    name                 = "${var.app-name}-disk-os-vm0-${var.env-name}"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
@@ -35,12 +41,18 @@ resource "azurerm_windows_virtual_machine" "project-vm1" {
     sku       = "2022-Datacenter"
     version   = "latest"
   }
+
+  tags = {
+    subscription = var.sub-name
+    application = var.app-name
+    environment = var.env-name
+  }
 }
 
 # Auto shutdown VM
 
 resource "azurerm_dev_test_global_vm_shutdown_schedule" "project-shutdown" {
-  virtual_machine_id = azurerm_windows_virtual_machine.project-vm1.id
+  virtual_machine_id = azurerm_windows_virtual_machine.project-vm0.id
   location            = azurerm_resource_group.project.location
   enabled            = true
 
@@ -49,5 +61,11 @@ resource "azurerm_dev_test_global_vm_shutdown_schedule" "project-shutdown" {
 
   notification_settings {
     enabled         = false   
+  }
+
+  tags = {
+    subscription = var.sub-name
+    application = var.app-name
+    environment = var.env-name
   }
  }

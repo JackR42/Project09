@@ -4,6 +4,12 @@ resource "azurerm_public_ip" "project-pip-bastion" {
   location            = azurerm_resource_group.project.location
   allocation_method   = "Static"
   sku                 = "Standard"
+
+  tags = {
+    subscription = var.sub-name
+    application = var.app-name
+    environment = var.env-name
+  }
 }
 
 resource "azurerm_bastion_host" "project-bastion-host" {
@@ -22,5 +28,11 @@ resource "azurerm_bastion_host" "project-bastion-host" {
     name                 = "ipconfig"
     subnet_id            = azurerm_subnet.project-subnet-bastion.id
     public_ip_address_id = azurerm_public_ip.project-pip-bastion.id
+  }
+
+  tags = {
+    subscription = var.sub-name
+    application = var.app-name
+    environment = var.env-name
   }
 }

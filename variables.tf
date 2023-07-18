@@ -16,4 +16,16 @@ variable "loc-name" {
   description = "The name of the Azure Region in which all resources should be created."
   default = "westeurope"
 }
+variable "vm0-name" {
+  description = "The name of the VM Jumpbox."
+  default = "VM0"
+}
 
+variable "vm1-name" {
+  description = "The name of the first VM SQL."
+  default = "VMSQL1"
+}
+variable "vm2-name" {
+  description = "The name of the second VM SQL."
+  default = "VMSQL2"
+}

@@ -1,5 +1,3 @@
-### BEGIN MAIN
-
 ### BEGIN KeyVault
 data "azurerm_key_vault" "project" {
   name                = "keyvaultProject09564209"
@@ -45,6 +43,7 @@ terraform {
 resource "azurerm_resource_group" "project" {
   name = "${var.sub-name}-RG-${var.app-name}-${var.env-name}"
   location = "${var.loc-name}"
+
   tags = {
     subscription = var.sub-name
     application = var.app-name
