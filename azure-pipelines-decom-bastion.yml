@@ -1,0 +1,30 @@
+# Starter pipeline: azure-pipelines-decom-bastion.yml
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: TF_DECOMMISSION
+  - job:
+    steps:
+    - task: TerraformInstaller@0
+      displayName: TF_INSTALL
+      inputs:
+        terraformVersion: 'latest'
+    - task: TerraformTaskV3@3
+      displayName: TF_INIT
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: 'SPN-Project09'
+        backendAzureRmResourceGroupName: 'S1-RG-CORE'
+        backendAzureRmStorageAccountName: 'storagecrproject09564209'
+        backendAzureRmContainerName: 'tfstate'
+        backendAzureRmKey: 'main.tfstate'
+    - task: TerraformTaskV3@3
+      displayName: TF_Destroy
+      inputs:
+        provider: 'azurerm'
+        command: 'destroy'
+        commandOptions: '-target=azurerm_bastion_host.project-bastion-host  -var-file=variables-dev.tfvars'
+        environmentServiceNameAzureRM: 'SPN-Project09'
