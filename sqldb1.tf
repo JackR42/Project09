@@ -35,3 +35,25 @@ resource "azurerm_mssql_database" "project-db1" {
     Environment = var.env-name
   }
 }
+
+# Create FW rule to allow access from AZURE SERVICES, e.g. PowerApp
+resource "azurerm_mssql_firewall_rule" "project-sqldb1fw0" {
+  name = "FirewallRulesqldb1fw0"
+  server_id = azurerm_mssql_server.project-sqldb1.id
+  start_ip_address = "0.0.0.0"
+  end_ip_address = "0.0.0.0"
+}
+# Create FW rule to allow access from OFFICE
+resource "azurerm_mssql_firewall_rule" "project-sqldb1fw1" {
+  name = "FirewallRuledsqlb1fw1"
+  server_id = azurerm_mssql_server.project-sqldb1.id
+  start_ip_address = "91.205.194.1"
+  end_ip_address = "91.205.194.1"
+}
+# Create FW rule to allow access from HOME
+resource "azurerm_mssql_firewall_rule" "project-sqldb1fw2" {
+  name = "FirewallRulesqldb1fw2"
+  server_id = azurerm_mssql_server.project-sqldb1.id
+  start_ip_address = "94.209.108.55"
+  end_ip_address = "94.209.108.55"
+}
