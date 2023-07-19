@@ -10,3 +10,6 @@ vm2-name             = "VMSQL2"
 vnet-cidr            = "10.40.2.0/24"
 subnet-cidr          = "10.40.2.128/25"
 subnet-cidr-bastion  = "10.40.2.0/25"
+
+sqldb1-name          = "SQLDB1"
+sqldb2-name          = "SQLDB2"

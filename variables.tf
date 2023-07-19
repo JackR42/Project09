@@ -29,3 +29,13 @@ variable "vm2-name" {
   description = "The name of the second VM SQL."
   default = "VMSQL2"
 }
+
+variable "sqldb1-name" {
+  description = "The name of the first SQLDB virtual instance."
+  default = "SQLDB1"
+}
+
+variable "sqldb2-name" {
+  description = "The name of the second SQLDB virtual instance."
+  default = "SQLDB2"
+}
