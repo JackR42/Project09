@@ -26,3 +26,5 @@ Azure DevOps Pipeline - VM jumpbox with web-based RDP via Bastion
 - https://www.ntweekly.com/2022/06/23/create-azure-vnet-subnet-and-nsg-with-terraform/
 - https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/bastion_host
 - https://dev.to/holger/test-azure-bastion-deployment-via-terraform-18o8
+
+- Availability Groups with SQLDB (not SQLVM, SQLMI): https://medium.com/devops-dudes/create-azure-sql-failover-group-using-terraform-16702749bb50
