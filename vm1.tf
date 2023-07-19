@@ -49,8 +49,22 @@ resource "azurerm_windows_virtual_machine" "project-vm1" {
   }
 }
 
-# Auto shutdown VM2
+# Firewall
+resource "azurerm_network_security_rule" "MSSQLRule" {
+  name                        = "MSSQLRule"
+  resource_group_name = azurerm_resource_group.project.name
+  priority                    = 1001
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = 1433
+  source_address_prefix       = var.subnet-cidr
+  destination_address_prefix  = "*"
+  network_security_group_name = azurerm_network_security_group.project-nsg-subnet.name
+}
 
+# Auto shutdown VM1
 resource "azurerm_dev_test_global_vm_shutdown_schedule" "project-shutdown-vm1" {
   virtual_machine_id = azurerm_windows_virtual_machine.project-vm1.id
   location            = azurerm_resource_group.project.location
