@@ -31,6 +31,8 @@ $storageName = "storagecr$ProjectName$randomInt".ToLower()
 $spnName = "SPN-$ProjectName" #AppName=SpnName
 $websiteStorageName = "web$ProjectName$randomInt".ToLower()
 $SQLServerInstanceName = "sql$ProjectName$randomInt".ToLower()
+$SQLServerInstance1Name = "sqldb1$ProjectName$randomInt".ToLower()
+$SQLServerInstance2Name = "sqldb2$ProjectName$randomInt".ToLower()
 #$dwp = $null
 if ($dwp -eq $null) {
     $dwp = Read-Host -Prompt "Dwp?"

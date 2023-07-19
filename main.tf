@@ -28,6 +28,15 @@ data "azurerm_key_vault_secret" "secret5" {
   key_vault_id = data.azurerm_key_vault.project.id
 }
 
+data "azurerm_key_vault_secret" "secret6" {
+  name         = "SQLServer-Instance1Name"
+  key_vault_id = data.azurerm_key_vault.project.id
+}
+
+data "azurerm_key_vault_secret" "secret7" {
+  name         = "SQLServer-Instance2Name"
+  key_vault_id = data.azurerm_key_vault.project.id
+}
 ### END KeyVault
 
 ### BEGIN INIT
