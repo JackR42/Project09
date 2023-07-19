@@ -21,7 +21,6 @@ resource "azurerm_mssql_server" "project-sqldb1" {
 resource "azurerm_mssql_database" "project-db1" {
   name            = "DBA42"
   server_id       = azurerm_mssql_server.project-sqldb1.id
-  license_type    = "LicenseIncluded"
   max_size_gb     = 1
   sku_name        = "GP_S_Gen5_1"
   auto_pause_delay_in_minutes = 60
