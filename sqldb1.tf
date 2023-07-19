@@ -36,4 +36,3 @@ resource "azurerm_mssql_database" "project-db1" {
     Environment = var.env-name
   }
 }
-}
