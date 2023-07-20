@@ -39,9 +39,15 @@ data "azurerm_key_vault_secret" "secret7" {
 }
 ### END KeyVault
 
-#Powershell script
+#Powershell scripts
 data "template_file" "VM-Configure" {
     template = "${file("scripts/VM-Configure.ps1")}"
+  vars = {
+    project = "${azurerm_resource_group.project.name}"
+  }
+} 
+data "template_file" "VM-Install-SSMS" {
+    template = "${file("scripts/VM-Install-SSMS.ps1")}"
   vars = {
     project = "${azurerm_resource_group.project.name}"
   }

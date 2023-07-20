@@ -49,8 +49,22 @@ resource "azurerm_windows_virtual_machine" "project-vm0" {
   }
 }
 
-# Auto shutdown VM0
+#Install SSMS via Powershell script
+resource "azurerm_virtual_machine_extension" "project-vm0-configure" {
+  name                 = "${var.app-name}-vm0-configure-${var.env-name}"
+  virtual_machine_id   = azurerm_windows_virtual_machine.project-vm0.id
+  publisher            = "Microsoft.Compute"
+  type                 = "CustomScriptExtension"
+  type_handler_version = "1.9"
 
+  protected_settings = <<SETTINGS
+  {    
+    "commandToExecute": "powershell -command \"[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('${base64encode(data.template_file.VM-Install-SSMS.rendered)}')) | Out-File -filepath C:\Temp\VM-Install-SSMS.ps1\" && powershell -ExecutionPolicy Unrestricted -File C:\Temp\VM-Install-SSMS.ps1 -Project ${data.template_file.VM-Install-SSMS.vars.project}}"
+  }
+  SETTINGS
+}
+
+# Auto shutdown VM0
 resource "azurerm_dev_test_global_vm_shutdown_schedule" "project-shutdown-vm0" {
   virtual_machine_id = azurerm_windows_virtual_machine.project-vm0.id
   location            = azurerm_resource_group.project.location
