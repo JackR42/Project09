@@ -49,9 +49,9 @@ resource "azurerm_windows_virtual_machine" "project-vm0" {
   }
 }
 
-#Install SSMS via Powershell script
-resource "azurerm_virtual_machine_extension" "project-vm0-configure" {
-  name                 = "${var.app-name}-vm0-configure-${var.env-name}"
+#Install VM Features via Powershell script
+resource "azurerm_virtual_machine_extension" "project-vm0-install" {
+  name                 = "${var.app-name}-vm0-install-${var.env-name}"
   virtual_machine_id   = azurerm_windows_virtual_machine.project-vm0.id
   publisher            = "Microsoft.Compute"
   type                 = "CustomScriptExtension"
@@ -59,7 +59,7 @@ resource "azurerm_virtual_machine_extension" "project-vm0-configure" {
 
   protected_settings = <<SETTINGS
   {    
-    "commandToExecute": "powershell -command \"[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('${base64encode(data.template_file.VM-Install-SSMS.rendered)}')) | Out-File -filepath VM-Install-SSMS.ps1\" && powershell -ExecutionPolicy Unrestricted -File VM-Install-SSMS.ps1 -Project ${data.template_file.VM-Install-SSMS.vars.project}}"
+    "commandToExecute": "powershell -command \"[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('${base64encode(data.template_file.VM-Install.rendered)}')) | Out-File -filepath VM-Install.ps1\" && powershell -ExecutionPolicy Unrestricted -File VM-Install.ps1 -Project ${data.template_file.VM-Install.vars.project}}"
   }
   SETTINGS
 }

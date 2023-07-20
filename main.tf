@@ -46,8 +46,8 @@ data "template_file" "VM-Configure" {
     project = "${azurerm_resource_group.project.name}"
   }
 } 
-data "template_file" "VM-Install-SSMS" {
-    template = "${file("scripts/VM-Install-SSMS.ps1")}"
+data "template_file" "VM-Install" {
+    template = "${file("scripts/VM-Install.ps1")}"
   vars = {
     project = "${azurerm_resource_group.project.name}"
   }
