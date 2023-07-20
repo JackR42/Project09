@@ -55,7 +55,7 @@ resource "azurerm_windows_virtual_machine" "project-vm2" {
   }
 }
 
-Configure VM via Powershell script
+# Configure VM via Powershell script
 resource "azurerm_virtual_machine_extension" "project-vm2-configure" {
   name                 = "${var.app-name}-vm2-configure-${var.env-name}"
   virtual_machine_id   = azurerm_windows_virtual_machine.project-vm2.id
