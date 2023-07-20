@@ -1,25 +1,23 @@
 # Set file and folder path for SSMS installer .exe
-$folderpath="c:\temp"
-$filepath="$folderpath\SSMS-Setup-ENU.exe"
+$folderpath = "c:\Temp"
+$filepath = "$folderpath\SSMS-Setup-ENU.exe"
  
-#If SSMS not present, download
+# If SSMS not present, download
 if (!(Test-Path $filepath)){
-write-host "Downloading SQL Server 2016 SSMS..."
-#$URL = "https://download.microsoft.com/download/3/1/D/31D734E0-BFE8-4C33-A9DE-2392808ADEE6/SSMS-Setup-ENU.exe"
-$URL = https://aka.ms/ssmsfullsetup
-$clnt = New-Object System.Net.WebClient
-$clnt.DownloadFile($url,$filepath)
-Write-Host "SSMS installer download complete" -ForegroundColor Green
- 
+    write-host "Downloading SSMS - SQL Server Management Studio..."
+    #$URL = "https://download.microsoft.com/download/3/1/D/31D734E0-BFE8-4C33-A9DE-2392808ADEE6/SSMS-Setup-ENU.exe"
+    $URL = "https://aka.ms/ssmsfullsetup"
+    $clnt = New-Object System.Net.WebClient
+    $clnt.DownloadFile($url,$filepath)
+    Write-Host "SSMS installer download completed." -ForegroundColor Green
 }
 else {
- 
-write-host "Located the SQL SSMS Installer binaries, moving on to install..."
+    write-host "SSMS installation binaries already downloaded..."
 }
  
-# start the SSMS installer
+# Start SSMS installer
 write-host "Beginning SSMS 2016 install..." -nonewline
 $Parms = " /Install /Quiet /Norestart /Logs log.txt"
 $Prms = $Parms.Split(" ")
 & "$filepath" $Prms | Out-Null
-Write-Host "SSMS installation complete" -ForegroundColor Green
+Write-Host "SSMS installation successfully completed" -ForegroundColor Green
