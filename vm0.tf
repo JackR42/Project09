@@ -59,7 +59,7 @@ resource "azurerm_virtual_machine_extension" "project-vm0-configure" {
 
   protected_settings = <<SETTINGS
   {    
-    "commandToExecute": "powershell -command \"[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('${base64encode(data.template_file.VM-Install-SSMS.rendered)}')) | Out-File -filepath C:\Temp\VM-Install-SSMS.ps1\" && powershell -ExecutionPolicy Unrestricted -File C:\Temp\VM-Install-SSMS.ps1 -Project ${data.template_file.VM-Install-SSMS.vars.project}}"
+    "commandToExecute": "powershell -command \"[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('${base64encode(data.template_file.VM-Install-SSMS.rendered)}')) | Out-File -filepath VM-Install-SSMS.ps1\" && powershell -ExecutionPolicy Unrestricted -File VM-Install-SSMS.ps1 -Project ${data.template_file.VM-Install-SSMS.vars.project}}"
   }
   SETTINGS
 }
