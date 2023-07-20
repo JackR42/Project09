@@ -44,6 +44,7 @@ data "template_file" "VM-Configure" {
     template = "${file("scripts/VM-Configure.ps1")}"
   vars = {
     project = "${azurerm_resource_group.project.name}"
+  }
 } 
 
 ### BEGIN INIT
