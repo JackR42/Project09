@@ -22,7 +22,6 @@ resource "azurerm_windows_virtual_machine" "project-vm0" {
   resource_group_name = azurerm_resource_group.project.name
   location            = azurerm_resource_group.project.location
   size                = "Standard_DS2_v2"
-  delete_os_disk_on_termination = true
   admin_username       = data.azurerm_key_vault_secret.secret2.value
   admin_password       = data.azurerm_key_vault_secret.secret3.value  
 
