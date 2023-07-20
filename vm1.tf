@@ -65,7 +65,6 @@ resource "azurerm_virtual_machine_extension" "project-vm1-configure" {
 
   protected_settings = <<SETTINGS
   {    
-#    "commandToExecute": "powershell -command \"[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('${base64encode(data.template_file.VM-Configure.rendered)}')) | Out-File -filepath C:\Temp\VM-Configure.ps1\" && powershell -ExecutionPolicy Unrestricted -File C:\Temp\VM-Configure.ps1 -Project ${data.template_file.VM-Configure.vars.project}}"
     "commandToExecute": "powershell -command \"[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('${base64encode(data.template_file.VM-Configure.rendered)}')) | Out-File -filepath VM-Configure.ps1\" && powershell -ExecutionPolicy Unrestricted -File VM-Configure.ps1 -Project ${data.template_file.VM-Configure.vars.project}}"
   }
   SETTINGS
