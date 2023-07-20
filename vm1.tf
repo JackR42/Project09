@@ -58,7 +58,6 @@ resource "azurerm_windows_virtual_machine" "project-vm1" {
 #Configure VM via Powershell script
 resource "azurerm_virtual_machine_extension" "project-vm1-configure" {
   name                 = "${var.app-name}-vm1-configure-${var.env-name}"
-  resource_group_name  = azurerm_resource_group.project.name
   virtual_machine_id   = azurerm_windows_virtual_machine.project-vm1.id
   publisher            = "Microsoft.Compute"
   type                 = "CustomScriptExtension"
