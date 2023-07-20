@@ -42,12 +42,12 @@ resource "azurerm_windows_virtual_machine" "project-vm1" {
     version   = "latest"
   }
 
-#  provisioner "remote-exec" {
-#    inline = [
-#      # Open Windows Firewall for SQL Server
-#      "New-NetFirewallRule -DisplayName 'Allow SQL Server inbound' -Direction Inbound -Protocol TCP -LocalPort 1433 -Action Allow"
-#    ]
-# }
+  provisioner "remote-exec" {
+    inline = [
+      # Open Windows Firewall for SQL Server
+      "New-NetFirewallRule -DisplayName 'Allow SQL Server inbound' -Direction Inbound -Protocol TCP -LocalPort 1433 -Action Allow"
+    ]
+ }
 
   tags = {
     Subscription = var.sub-name
