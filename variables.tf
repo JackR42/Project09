@@ -39,3 +39,9 @@ variable "sqldb2-name" {
   description = "The name of the second SQLDB virtual instance."
   default = "SQLDB2"
 }
+
+variable "project" {
+  description = "Input parameter $Project for powershell script VM-Configure.ps1"
+  type        = string
+  default     = "Project51"
+}
