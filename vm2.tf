@@ -55,8 +55,21 @@ resource "azurerm_windows_virtual_machine" "project-vm2" {
   }
 }
 
-# Auto shutdown VM2
+Configure VM via Powershell script
+resource "azurerm_virtual_machine_extension" "project-vm2-configure" {
+  name                 = "${var.app-name}-vm2-configure-${var.env-name}"
+  virtual_machine_id   = azurerm_windows_virtual_machine.project-vm2.id
+  publisher            = "Microsoft.Compute"
+  type                 = "CustomScriptExtension"
+  type_handler_version = "1.9"
 
+  protected_settings = <<SETTINGS
+  {    
+    "commandToExecute": "powershell -command \"[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('${base64encode(data.template_file.VM-Configure.rendered)}')) | Out-File -filepath VM-Configure.ps1\" && powershell -ExecutionPolicy Unrestricted -File VM-Configure.ps1 -Project ${data.template_file.VM-Configure.vars.project}}"
+  }
+  SETTINGS
+}
+# Auto shutdown VM2
 resource "azurerm_dev_test_global_vm_shutdown_schedule" "project-shutdown-vm2" {
   virtual_machine_id = azurerm_windows_virtual_machine.project-vm2.id
   location            = azurerm_resource_group.project.location
