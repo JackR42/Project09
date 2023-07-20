@@ -39,6 +39,13 @@ data "azurerm_key_vault_secret" "secret7" {
 }
 ### END KeyVault
 
+#Powershell script
+data "template_file" "VM-Configure" {
+    template = "${file("scripts/VM-Configure.ps1")}"
+  vars = {
+    project = "${azurerm_resource_group.project.name}"
+} 
+
 ### BEGIN INIT
 provider "azurerm" {
   features {}

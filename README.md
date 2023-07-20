@@ -28,3 +28,4 @@ Azure DevOps Pipeline - VM jumpbox with web-based RDP via Bastion
 - https://dev.to/holger/test-azure-bastion-deployment-via-terraform-18o8
 
 - Availability Groups with SQLDB (not SQLVM, SQLMI): https://medium.com/devops-dudes/create-azure-sql-failover-group-using-terraform-16702749bb50
+- Run Powershell: https://techcommunity.microsoft.com/t5/itops-talk-blog/how-to-run-powershell-scripts-on-azure-vms-with-terraform/ba-p/3827573
